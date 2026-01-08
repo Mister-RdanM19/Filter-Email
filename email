@@ -1,0 +1,35 @@
+# @Author: Mr.Rm19
+
+printf "[+] Email List : ${LIGHTCYAN}"
+read emaillist
+echo "[+] Memuat files $emaillist "
+value=$(<$emaillist)
+echo "[+] $emaillist telah dimuat"
+echo "[+] Mencoba filter email pada file $emaillist"
+echo "=============================================="
+echo "=> YAHOO FILTER"
+echo "$value" | grep -E "@yahoo|@ymail|@rocketmail" | awk '{print $0}' | less >> "yahoo.txt"
+echo "=> HOTMAIL FILTER"
+echo "$value" | grep -E "@hotmail|@live|@outlook|@msn" | awk '{print $0}' | less >> "hotmail.txt"
+echo "=> AOL FILTER"
+echo "$value" | grep -E "@aol" | awk '{print $0}' | less >> "aol.txt"
+echo "=> ICLOUD  FILTER"
+echo "$value" | grep -E "@me.com|@icloud.com|@mac.com" | awk '{print $0}' | less >> "Icloud.txt"
+echo "=> GMAIL  FILTER"
+echo "$value" | grep -E "@gmail|@google|@googlemail" | awk '{print $0}' | less >> "Gmail.txt"
+echo "=> SBC GLOBAL  FILTER"
+echo "$value" | grep -E "@juno|@netzero|@optonline|@optimum|@att|@ameritech|@sbcglobal|@bellsouth|@flash|@nvbell|@pacbell|@prodigy|@snet|@swbell" | awk '{print $0}' | less >> "SBC.txt"
+echo "=> OTHER  FILTER"
+echo "$value" | grep -v -E '@yahoo|@ymail|@rocketmail|@hotmail|@live|@outlook|@msn|@aol|@me.com|@icloud.com|@mac.com|@gmail|@google|@googlemail' | awk '{print $0}' | less >> "Other.txt"
+echo "=============================================="
+echo "=> Total Hasil"
+echo "=> Mr.Rm19 - indonesia hacker Rulez
+echo "=============================================="
+echo ""
+wc -l yahoo.txt
+wc -l hotmail.txt
+wc -l aol.txt
+wc -l Icloud.txt
+wc -l Gmail.txt
+wc -l Other.txt
+echo ""
